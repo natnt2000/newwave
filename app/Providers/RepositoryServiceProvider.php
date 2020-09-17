@@ -24,6 +24,11 @@ class RepositoryServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->bind(
+            'App\Repositories\Contracts\EloquentRepositoryInterface',
+            'App\Repositories\Eloquents\BaseRepository',
+        );
+
+        $this->app->bind(
             'App\Repositories\Contracts\FacultyRepositoryInterface',
             'App\Repositories\Eloquents\FacultyRepository',
         );
@@ -36,6 +41,14 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             'App\Repositories\Contracts\StudentRepositoryInterface',
             'App\Repositories\Eloquents\StudentRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\Contracts\UserRepositoryInterface',
+            'App\Repositories\Eloquents\UserRepository'
+        );
+        $this->app->bind(
+            'App\Repositories\Contracts\StudentSubjectRepositoryInterface',
+            'App\Repositories\Eloquents\StudentSubjectRepository'
         );
 
 

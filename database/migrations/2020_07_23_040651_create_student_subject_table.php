@@ -16,7 +16,7 @@ class CreateStudentSubjectTable extends Migration
         Schema::create('student_subject', function (Blueprint $table) {
             $table->integer('student_id');
             $table->integer('subject_id');
-            $table->double('avg_score')->default(0);
+            $table->double('score')->default(0);
             $table->timestamps();
         });
     }

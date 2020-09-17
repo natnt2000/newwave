@@ -4,16 +4,19 @@ namespace App\Http\Controllers\BackEnd;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Subject\StoreSubject;
+use App\Repositories\Contracts\FacultyRepositoryInterface;
 use App\Repositories\Contracts\SubjectRepositoryInterface;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
     protected $subjectRepository;
+    protected $facultyRepository;
 
-    public function __construct(SubjectRepositoryInterface $subjectRepository)
-    {   
+    public function __construct(SubjectRepositoryInterface $subjectRepository, FacultyRepositoryInterface $facultyRepository)
+    {
         $this->subjectRepository = $subjectRepository;
+        $this->facultyRepository = $facultyRepository;
     }
 
     /**
@@ -25,7 +28,8 @@ class SubjectController extends Controller
     {
         $subjects = $this->subjectRepository->all();
 
-        return view('subject.list', compact('subjects'));
+        return view('subjects.list', compact('subjects'));
+
     }
 
     /**
@@ -35,8 +39,8 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        $faculties = $this->subjectRepository->getAllFaculty();
-        return view('subject.create', compact('faculties'));
+        $faculties = $this->facultyRepository->all();
+        return view('subjects.create', compact('faculties'));
     }
 
     /**
@@ -47,8 +51,7 @@ class SubjectController extends Controller
      */
     public function store(StoreSubject $request)
     {
-        $validated = $request->validated();
-        $this->subjectRepository->create($request);
+        $this->subjectRepository->create($request->all());
         return redirect()->route('subjects.index')->with('success', 'Subject Created Successfully');
     }
 
@@ -71,9 +74,9 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        $faculties = $this->subjectRepository->getAllFaculty();
+        $faculties = $this->facultyRepository->all();
         $subject = $this->subjectRepository->find($id);
-        return view('subject.edit', compact('faculties', 'subject'));
+        return view('subjects.edit', compact('faculties', 'subject'));
     }
 
     /**
@@ -85,9 +88,7 @@ class SubjectController extends Controller
      */
     public function update(StoreSubject $request, $id)
     {
-        $validated = $request->validated();
-
-        $this->subjectRepository->update($request, $id);
+        $this->subjectRepository->update($request->all(), $id);
 
         return redirect()->route('subjects.index')->with('success', 'Subject Updated Successfully');
     }
@@ -100,7 +101,7 @@ class SubjectController extends Controller
      */
     public function destroy($id)
     {
-        $this->subjectRepository->remove($id);
+        $this->subjectRepository->delete($id);
 
         return redirect()->route('subjects.index')->with('success', 'Subject Deleted Successfully');
     }

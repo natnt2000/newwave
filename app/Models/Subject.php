@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subject extends Model
 {
-    protected $table = "subjects";
 
     protected $fillable = [
         'name',
@@ -15,11 +14,11 @@ class Subject extends Model
 
     public function faculty()
     {
-        return $this->belongsTo('App\Models\Faculty', 'faculty_id');
+        return $this->belongsTo(Faculty::class);
     }
 
     public function students()
     {
-        return $this->belongsToMany('App\Models\Student', 'student_subject')->withPivot('avg_score')->withTimestamps();
+        return $this->belongsToMany(Student::class, 'student_subject')->withPivot('score')->withTimestamps();
     }
 }

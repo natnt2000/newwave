@@ -7,15 +7,15 @@
             <form action="{{ route('subjects.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="">Name</label>
-                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
+                    <label for="subjectNameInput">Name</label>
+                    <input type="text" id="subjectNameInput" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
                     @error('name')
                         <span class="text-danger" >{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="">Faculty</label>
-                    <select name="faculty_id" class="form-control @error('faculty_id') is-invalid @enderror">
+                    <label for="facultyIdInput">Faculty</label>
+                    <select name="faculty_id" id="facultyIdInput" class="form-control @error('faculty_id') is-invalid @enderror">
                         <option value="" selected>Choose faculty ...</option>
                         @foreach ($faculties as $key => $faculty)
                             <option value="{{$faculty->id}}" {{ old('faculty_id') == $faculty->id ? "selected" : "" }}>{{$faculty->name}}</option>

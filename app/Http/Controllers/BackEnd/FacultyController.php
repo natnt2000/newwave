@@ -4,8 +4,10 @@ namespace App\Http\Controllers\BackEnd;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Faculty\StoreFaculty;
+use App\Models\Faculty;
 use App\Repositories\Contracts\FacultyRepositoryInterface;
 use Illuminate\Http\Request;
+use App\Http\Resources\Faculty as FacultyResource;
 
 class FacultyController extends Controller
 {
@@ -25,7 +27,7 @@ class FacultyController extends Controller
     {
         $faculties = $this->facultyRepository->all();
 
-        return view('faculty.list', compact('faculties'));
+        return view('faculties.list', compact('faculties'));
     }
 
     /**
@@ -35,28 +37,27 @@ class FacultyController extends Controller
      */
     public function create()
     {
-        return view('faculty.create');
+        return view('faculties.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreFaculty $request)
     {
-        $validated = $request->validated();
-
-        $this->facultyRepository->create($request);
-
-        return redirect()->route('faculties.index')->with('success', 'Faculty Created Successfully');
+//        dd($request->all());
+        $this->facultyRepository->create($request->all());
+//
+//        return redirect()->route('faculties.index')->with('success', 'Faculty Created Successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -67,40 +68,51 @@ class FacultyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $faculty = $this->facultyRepository->find($id);
 
-        return response()->json(compact('faculty', 'id'));
+        return view('faculties.edit', compact('faculty'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreFaculty $request, $id)
     {
-        $faculty = $this->facultyRepository->update($request, $id);
-        $message = "Faculty Updated Successfully";
-        return response()->json(compact('faculty', 'message'));
+        $faculty = $this->facultyRepository->update($request->all(), $id);
+        return redirect()->route('faculties.index')->with('success', 'Faculty Created Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $this->facultyRepository->remove($id);
-        
+        $this->facultyRepository->delete($id);
+
         return redirect()->route('faculties.index')->with('success', 'Faculty Deleted Successfully');
+    }
+
+    public function list()
+    {
+        $faculties = $this->facultyRepository->all();
+        return FacultyResource::collection($faculties);
+    }
+
+    public function find($id)
+    {
+        $faculty = $this->facultyRepository->find($id);
+        return new FacultyResource($faculty);
     }
 }

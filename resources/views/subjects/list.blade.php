@@ -50,6 +50,9 @@
                 @endforeach
               </tbody>
             </table>
+            <div class="float-right">
+              {{ $subjects->links() }}
+            </div>
           </div>
         </div>
       </div>

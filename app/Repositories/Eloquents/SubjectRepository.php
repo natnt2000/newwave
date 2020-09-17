@@ -2,48 +2,31 @@
 
 namespace App\Repositories\Eloquents;
 
-use App\Models\Faculty;
 use App\Models\Subject;
 use App\Repositories\Contracts\SubjectRepositoryInterface;
 
-class SubjectRepository implements SubjectRepositoryInterface
+class SubjectRepository extends BaseRepository implements SubjectRepositoryInterface
 {
-    public function all()
+    public function getModel()
     {
-        return Subject::all();
+        return Subject::class;
     }
 
-    public function getAllFaculty()
+    public function list()
     {
-        return Faculty::all();
+        return $this->model->paginate(10);
     }
 
-    public function create($request)
+    public function getSubjectsNotLearned($student)
     {
-        $subject = new Subject;
+        $subject_id = [];
 
-        $subject->name = $request->name;
-        $subject->faculty_id = $request->faculty_id;
+        foreach ($student->subjects as $key => $subject) {
+            $subject_id[$key] = $subject->id;
+        }
 
-        $subject->save();
+        $subjectOfFaculty = $this->model->where('faculty_id', '=', $student->faculty_id)->get();
+        return $subjectOfFaculty->diff($this->model->whereIn('id', $subject_id)->get());
     }
 
-    public function find($id)
-    {
-        return Subject::find($id);
-    }
-
-    public function update($request, $id)
-    {
-        $subject = Subject::find($id);
-        $subject->name = $request->name;
-        $subject->faculty_id = $request->faculty_id;
-        $subject->save();
-    }
-
-    public function remove($id)
-    {
-        $subject = Subject::find($id);
-        $subject->delete();
-    }
 }

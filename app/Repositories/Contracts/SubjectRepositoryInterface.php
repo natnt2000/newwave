@@ -4,16 +4,9 @@ namespace App\Repositories\Contracts;
 
 interface SubjectRepositoryInterface 
 {
-    public function all();
 
-    public function getAllFaculty();
+    public function list();
 
-    public function create($request);
-
-    public function find($id);
-
-    public function update($request, $id);
-    
-    public function remove($id);
+    public function getSubjectsNotLearned($student);
 
 }

@@ -14,7 +14,7 @@ class AddAvatarColumToStudentsTable extends Migration
     public function up()
     {
         Schema::table('students', function (Blueprint $table) {
-            $table->string('avatar')->after('phone_number');
+            $table->string('avatar')->after('phone_number')->nullable();
         });
     }
 

@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Carbon\Carbon;
 class Student extends Model
 {
-    protected $table = "students";
+    protected $appends = ['age', 'avg_score'];
 
     protected $fillable = [
         'fullname',
@@ -14,21 +14,35 @@ class Student extends Model
         'birthday',
         'address',
         'phone_number',
+        'avatar',
         'status',
-        'faculty_id'
+        'faculty_id',
+        'user_id',
     ];
 
     public function faculty(){
-        return $this->belongsTo('App\Models\Faculty', 'faculty_id');
+        return $this->belongsTo(Faculty::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     public function subjects()
     {
-        return $this->belongsToMany('App\Subject', 'student_subject')->withPivot('avg_score')->withTimestamps();
+        return $this->belongsToMany(Subject::class, 'student_subject')->withPivot('score')->withTimestamps();
+    }
+
+    public function getAgeAttribute()
+    {
+        return Carbon::parse($this->attributes['birthday'])->age;
+    }
+
+    // 
+
+    public function getAvgScoreAttribute()
+    {
+        return $this->subjects()->avg('score') ?: 0;
     }
 }

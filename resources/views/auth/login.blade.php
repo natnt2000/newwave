@@ -10,7 +10,6 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -63,6 +62,13 @@
                                     </a>
                                 @endif
                             </div>
+
+
+                        </div>
+                        <div class="col-6 mt-3" style="margin-left: 200px">
+                            <a href="{{url('/login/google')}}" class="btn btn-primary btn-block">
+                                <i class="fa fa-google"></i> Login with Google
+                            </a>
                         </div>
                     </form>
                 </div>
@@ -71,3 +77,4 @@
     </div>
 </div>
 @endsection
+

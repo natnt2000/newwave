@@ -4,9 +4,13 @@ namespace App\Repositories\Contracts;
 
 interface StudentRepositoryInterface
 {
-    public function all();
+    public function createNewStudent($data = [], $user_id);
 
-    public function getAllFaculty();
+    public function updateStudent($data = [], $id);
 
-    public function create($request);
+    public function filter($data = []);
+
+    public function updateScore($data = [], $id);
+
+    public function getEmailOfStudentsHaveStudied();
 }

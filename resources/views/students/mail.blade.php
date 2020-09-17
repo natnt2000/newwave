@@ -1,0 +1,1 @@
+Because your GPA is below 5, you have been expelled

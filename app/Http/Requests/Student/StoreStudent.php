@@ -24,14 +24,14 @@ class StoreStudent extends FormRequest
     public function rules()
     {
         return [
-            'fullname' => ['required', 'string'],
-            'email' => ['required', 'string', 'email', 'unique:users'],
+            'fullname' => ['required', 'string', 'max: 255'],
+            'email' => ['required', 'string', 'email', 'unique:users,email', 'max: 255'],
             'birthday' => ['required'],
             'gender' => ['required'],
-            'phone_number' => ['required', 'regex:/((03|09)[0-9]{8})/'],
-            'address' => ['required'],
+            'phone_number' => ['required', 'regex:/^((03|09|07|08)[0-9]{8})$/'],
+            'address' => ['required', 'max: 255'],
             'faculty_id' => ['required'],
-            'avatar' => ['required', 'mimes:jpeg,bmp,png,jpg,gif,svg', 'max:2000'] 
+            'avatar' => ['required', 'mimes:jpeg,bmp,png,jpg,gif,svg', 'max:2000']
         ];
     }
 }

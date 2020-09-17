@@ -14,11 +14,11 @@ class Faculty extends Model
 
     public function students()
     {
-        return $this->hasMany('App\Models\Student', 'faculty_id');
+        return $this->hasMany(Student::class);
     }
 
     public function subjects()
     {
-        return $this->hasMany('App\Models\Subject', 'faculty_id');
+        return $this->hasMany(Subject::class);
     }
 }
