@@ -114,7 +114,7 @@
                         <div>
                             <img src="" id="avatarGetInfo" class="img-thumb" width="100" alt="">
                         </div>
-                        <input type="file" id="updateAvatar" name="avatar" class="form-control mt-3">
+                        <input type="file" id="updateAvatar" name="avatar" class="form-control mt-3" accept="image/*">
                         <span class="text-danger"></span>
                     </div>
                     <div class="form-group">

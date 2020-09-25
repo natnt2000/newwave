@@ -41,7 +41,6 @@ function handleSubjectNotlearned(subjectsNotLearned) {
 
     $("#handleClickAddSubject").on("click", function () {
         subjectIndex++;
-        console.log(subjectLength);
         console.log(subjectIndex);
         var dataRemove =
             $("#handleClickAddSubject").attr("data-removed") !== ""
@@ -61,6 +60,8 @@ function handleSubjectNotlearned(subjectsNotLearned) {
             optionSubject += `<option value=${subject.id}>${subject.name}</option>`;
         });
 
+
+
         if (subjectIndex <= subjectLength + subjectsNotLearned.length) {
             $("#subject_list_tbody").append(
                 `<tr id="tr-addSubject-${subjectIndex}" name="tr-subject-table">
@@ -75,16 +76,18 @@ function handleSubjectNotlearned(subjectsNotLearned) {
                     <input type="text" name="score[]" class="form-control col-4" />
                 </td>
                 <td>
-                    <a href="javascript:;" class="btn btn-secondary" type="submit" onclick="removeBeforeAddSubject(${subjectIndex})">Remove</a>
+                    <a href="javascript:;" class="btn btn-secondary" type="submit" onclick="subjectIndex--; console.log(subjectIndex);  removeBeforeAddSubject(${subjectIndex})">Remove</a>
                 </td>
                 </tr>`
             );
         }
+
         checkTheDropdowns();
     });
 }
 
 function removeBeforeAddSubject(trIndex) {
+
     const valueRemove = $(`#tr-addSubject-${trIndex}`)
         .find(`#select-${trIndex} option:selected`)
         .val();

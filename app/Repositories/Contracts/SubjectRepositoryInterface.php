@@ -2,11 +2,12 @@
 
 namespace App\Repositories\Contracts;
 
-interface SubjectRepositoryInterface 
+interface SubjectRepositoryInterface
 {
 
     public function list();
 
     public function getSubjectsNotLearned($student);
 
+    public function remove($id);
 }

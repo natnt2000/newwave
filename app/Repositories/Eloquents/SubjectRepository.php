@@ -29,4 +29,11 @@ class SubjectRepository extends BaseRepository implements SubjectRepositoryInter
         return $subjectOfFaculty->diff($this->model->whereIn('id', $subject_id)->get());
     }
 
+    public function remove($id)
+    {
+        $subject = $this->find($id);
+        $subject->students()->detach();
+        $subject->delete();
+    }
+
 }

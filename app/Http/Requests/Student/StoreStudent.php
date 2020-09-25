@@ -23,7 +23,7 @@ class StoreStudent extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'fullname' => ['required', 'string', 'max: 255'],
             'email' => ['required', 'string', 'email', 'unique:users,email', 'max: 255'],
             'birthday' => ['required'],
@@ -33,5 +33,11 @@ class StoreStudent extends FormRequest
             'faculty_id' => ['required'],
             'avatar' => ['required', 'mimes:jpeg,bmp,png,jpg,gif,svg', 'max:2000']
         ];
+        if (in_array($this->method(), ['PUT', 'PATCH'])) {
+            $rules['email'] = ['required', 'string', 'email', 'unique:users,email,' . $this->user_id, 'max: 255'];
+            $rules['avatar'] = ['mimes:jpeg,bmp,png,jpg,gif,svg', 'max:2000'];
+            $rules['faculty_id'] = [];
+        }
+        return $rules;
     }
 }

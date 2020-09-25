@@ -24,17 +24,10 @@ class StoreSubject extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:5',
+            'name' => 'required|min:5|max:255|unique:subjects,name,' . $this->subject,
             'faculty_id' => 'required'
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'name.required' => 'Name is required',
-            'name.min' => 'The length of name is greater than :min',
-            'faculty_id.required' => 'Faculty is required'
-        ];
-    }
+
 }

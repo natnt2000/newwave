@@ -16,7 +16,8 @@
         "laravel/framework": "^7.0",
         "laravel/socialite": "^4.4",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^2.1"
+        "laravel/ui": "^2.1",
+        "cknow/laravel-money": "~6.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.4",

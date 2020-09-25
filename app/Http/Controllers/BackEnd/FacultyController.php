@@ -48,10 +48,8 @@ class FacultyController extends Controller
      */
     public function store(StoreFaculty $request)
     {
-//        dd($request->all());
         $this->facultyRepository->create($request->all());
-//
-//        return redirect()->route('faculties.index')->with('success', 'Faculty Created Successfully');
+        return redirect()->route('faculties.index')->with('success', 'Faculty Created Successfully');
     }
 
     /**
@@ -99,9 +97,9 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        $this->facultyRepository->delete($id);
+        $faculty = $this->facultyRepository->remove($id);
 
-        return redirect()->route('faculties.index')->with('success', 'Faculty Deleted Successfully');
+        return redirect()->back()->with('success', 'Faculty Deleted Successfully');
     }
 
     public function list()

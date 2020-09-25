@@ -22,8 +22,8 @@ class StudentSubjectRepository extends BaseRepository implements StudentSubjectR
 
     public function updateScore($data = [], $student_id)
     {
-        $score = $data['score'];
-        $subject_id = $data['subject_id'];
+        $score = isset($data['score']) ? $data['score'] : [];
+        $subject_id = isset($data['subject_id']) ? $data['subject_id'] : [];
         for ($i = 0; $i < count($score); $i++) {
             if ($score[$i] != "" && $subject_id [$i] != "") {
                 $this->model->updateOrCreate([

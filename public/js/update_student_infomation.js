@@ -11,6 +11,7 @@ $('#update_student_info_form').on('submit', function (e) {
         processData: false,
         success: function (data) {
             console.log(data);
+            $('#updateAvatar').val('');
             $('#updated_student_info_message').text(data.message);
             $(`#student-${student_id}-fullname`).text(data.student.fullname);
             $(`#main-avatar-${student_id}`).attr('src', `${window.location.origin}/storage/images/avatars/${data.student.avatar}`);
@@ -26,6 +27,7 @@ $('#update_student_info_form').on('submit', function (e) {
             $('input').removeClass('is-invalid');
             $('span[class="text-danger"]').text("");
             $('#updateStudentInfo').modal('toggle');
+
         },
         error: function (error) {
             const {errors} = error.responseJSON;

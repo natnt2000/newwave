@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\BackEnd;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Student\FilterStudent;
 use App\Http\Requests\Student\StoreScore;
 use App\Http\Requests\Student\StoreStudent;
 use App\Http\Requests\Student\UpdateStudent;
@@ -40,7 +41,7 @@ class StudentController extends Controller
      */
     public function index(Request $request)
     {
-        $students = $this->studentRepository->filter($request->all())->paginate(20);
+        $students = $this->studentRepository->filter($request->all())->with(['user', 'subjects', 'faculty'])->paginate(20);
         return view('students.list', compact('students'));
     }
 
@@ -100,7 +101,7 @@ class StudentController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateStudent $request, $id)
+    public function update(StoreStudent $request, $id)
     {
         $student = $this->studentRepository->updateStudent($request->all(), $id);
         return response()->json(compact('student'));

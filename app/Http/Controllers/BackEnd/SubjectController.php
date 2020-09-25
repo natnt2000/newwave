@@ -26,7 +26,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $subjects = $this->subjectRepository->all();
+        $subjects = $this->subjectRepository->all(['faculty']);
 
         return view('subjects.list', compact('subjects'));
 
@@ -101,7 +101,7 @@ class SubjectController extends Controller
      */
     public function destroy($id)
     {
-        $this->subjectRepository->delete($id);
+        $this->subjectRepository->remove($id);
 
         return redirect()->route('subjects.index')->with('success', 'Subject Deleted Successfully');
     }

@@ -23,16 +23,16 @@ abstract class BaseRepository implements EloquentRepositoryInterface
         );
     }
 
-    public function all()
+    public function all($relations=[])
     {
-        return $this->model->paginate(20);
+        return $this->model->with($relations)->paginate(20);
     }
 
     public function find($id)
     {
         return $this->model->find($id);
     }
-    
+
     public function create($data=[])
     {
         return $this->model->create($data);

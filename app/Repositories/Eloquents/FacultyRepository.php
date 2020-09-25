@@ -12,5 +12,17 @@ class FacultyRepository extends BaseRepository implements FacultyRepositoryInter
         return Faculty::class;
     }
 
+    public function remove($id)
+    {
+        $faculty = $this->find($id);
+
+        foreach ($faculty->students as $key => $student) {
+            $student->subjects()->detach();
+        }
+
+        $faculty->students()->delete();
+        $faculty->subjects()->delete();
+        $faculty->delete();
+    }
 
 }

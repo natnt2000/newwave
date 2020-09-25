@@ -36,10 +36,10 @@ class Student extends Model
 
     public function getAgeAttribute()
     {
-        return Carbon::parse($this->attributes['birthday'])->age;
+        return Carbon::parse($this->birthday)->age;
     }
 
-    // 
+    //
 
     public function getAvgScoreAttribute()
     {

@@ -24,15 +24,9 @@ class StoreFaculty extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:5'
+            'name' => 'required|min:5|max:255|unique:faculties,name,' . $this->faculty,
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'name.required' => 'Name is required',
-            'name.min' => 'The length of name is greater than 5'
-        ];
-    }
+
 }
