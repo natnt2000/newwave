@@ -6,6 +6,15 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
     </expand>
     <select>
       <path>
@@ -17,13 +26,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bae82fc2-1687-4306-a45a-9004009856ce" name="Default Changelist" comment="Update 3:56pm 25/09/2020">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/newwave.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/handle_subjects_not_learned.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/handle_subjects_not_learned.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/students/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/students/list.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +171,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../travelo" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -199,7 +204,14 @@
       <workItem from="1600657029524" duration="95000" />
       <workItem from="1600744402928" duration="20000" />
       <workItem from="1601003475336" duration="17231000" />
-      <workItem from="1601024837406" duration="515000" />
+      <workItem from="1601024837406" duration="2490000" />
+      <workItem from="1601254282871" duration="44000" />
+      <workItem from="1601273728908" duration="46000" />
+      <workItem from="1601285417885" duration="688000" />
+      <workItem from="1601286484254" duration="492000" />
+      <workItem from="1601287820284" duration="383000" />
+      <workItem from="1601347359808" duration="750000" />
+      <workItem from="1601359756433" duration="4792000" />
     </task>
     <task id="LOCAL-00001" summary="Update 3:56pm 25/09/2020">
       <created>1601024221208</created>
@@ -247,10 +259,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1601019582609" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1600608531836">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1601254328525">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1600608531836" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601254328525" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1601024955441">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

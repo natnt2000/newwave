@@ -76,11 +76,23 @@ function handleSubjectNotlearned(subjectsNotLearned) {
                     <input type="text" name="score[]" class="form-control col-4" />
                 </td>
                 <td>
-                    <a href="javascript:;" class="btn btn-secondary" type="submit" onclick="subjectIndex--; console.log(subjectIndex);  removeBeforeAddSubject(${subjectIndex})">Remove</a>
+                    <a href="javascript:;" class="btn btn-secondary" type="submit"
+                    onclick="
+                        subjectIndex--;
+                        $('#handleClickAddSubject').removeAttr('hidden');
+                        removeBeforeAddSubject(${subjectIndex})
+                    ">
+                    Remove
+                    </a>
                 </td>
                 </tr>`
             );
+            if (subjectIndex === subjectLength + subjectsNotLearned.length) {
+                $('#handleClickAddSubject').attr('hidden', true);
+            }
         }
+
+
 
         checkTheDropdowns();
     });
@@ -92,7 +104,7 @@ function removeBeforeAddSubject(trIndex) {
         .find(`#select-${trIndex} option:selected`)
         .val();
     $(`#tr-addSubject-${trIndex}`).remove();
-    $(`select option[value=${valueRemove}]`).removeAttr("hidden");
+    $(`select`).find(`option[value="${valueRemove}"]`).removeAttr("hidden");
 
 }
 
