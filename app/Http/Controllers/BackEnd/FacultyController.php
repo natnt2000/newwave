@@ -48,7 +48,7 @@ class FacultyController extends Controller
      */
     public function store(StoreFaculty $request)
     {
-        $this->facultyRepository->create($request->all());
+        $this->facultyRepository->create_faculty($request->all());
         return redirect()->route('faculties.index')->with('success', 'Faculty Created Successfully');
     }
 
@@ -69,9 +69,9 @@ class FacultyController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        $faculty = $this->facultyRepository->find($id);
+        $faculty = $this->facultyRepository->find_by_slug($slug);
 
         return view('faculties.edit', compact('faculty'));
     }
@@ -85,8 +85,9 @@ class FacultyController extends Controller
      */
     public function update(StoreFaculty $request, $id)
     {
-        $faculty = $this->facultyRepository->update($request->all(), $id);
-        return redirect()->route('faculties.index')->with('success', 'Faculty Created Successfully');
+        $faculty = $this->facultyRepository->update_faculty($request->all(), $id);
+
+        return redirect()->route('faculties.index')->with('success', 'Faculty Updated Successfully');
     }
 
     /**

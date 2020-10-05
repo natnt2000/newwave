@@ -27,7 +27,13 @@
   <component name="ChangeListManager">
     <list default="true" id="bae82fc2-1687-4306-a45a-9004009856ce" name="Default Changelist" comment="Update 3:56pm 25/09/2020">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/handle_subjects_not_learned.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/handle_subjects_not_learned.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BackEnd/FacultyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BackEnd/FacultyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Faculty.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Faculty.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/Contracts/FacultyRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Contracts/FacultyRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/Eloquents/FacultyRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Eloquents/FacultyRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/FacultyFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/FacultyFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/SubjectFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/SubjectFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/faculties/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/faculties/list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/students/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/students/list.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -211,7 +217,10 @@
       <workItem from="1601286484254" duration="492000" />
       <workItem from="1601287820284" duration="383000" />
       <workItem from="1601347359808" duration="750000" />
-      <workItem from="1601359756433" duration="4792000" />
+      <workItem from="1601359756433" duration="5380000" />
+      <workItem from="1601455496513" duration="2589000" />
+      <workItem from="1601733925326" duration="38000" />
+      <workItem from="1601869175517" duration="2325000" />
     </task>
     <task id="LOCAL-00001" summary="Update 3:56pm 25/09/2020">
       <created>1601024221208</created>
@@ -275,9 +284,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1601024544082" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1601021485645">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1601870677045">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1601021485645" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1601870677045" />
   </component>
 </project>

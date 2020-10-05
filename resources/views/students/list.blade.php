@@ -9,10 +9,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <a href="{{ route('students.create') }}"
-                   class="btn btn-primary float-right mb-3">{{ __('messages.create') }}</a>
-                <button onclick="send_mail()"
-                        class="btn btn-primary float-right mr-3">{{ __('messages.send_mail') }}</button>
+
                 <div class="mb-5 ml-1">
                     <p class="font-weight-bold">{{ __('messages.filter_by') }}</p>
                     <form action="{{ route('students.index') }}" method="get">
@@ -75,6 +72,10 @@
                             <button type="submit" class="btn btn-success">{{ __('messages.search') }}</button>
                         </div>
                     </form>
+                    <a href="{{ route('students.create') }}"
+                       class="btn btn-primary float-right mb-3">{{ __('messages.create') }}</a>
+                    <button onclick="send_mail()"
+                            class="btn btn-primary float-right mr-3">{{ __('messages.send_mail') }}</button>
                 </div>
                 <div class="col-6">
                     @include('message')

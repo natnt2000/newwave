@@ -30,7 +30,7 @@
                             <td>
                                 <div class="btn-group">
                                     <a class="btn btn-info mr-2" role="button"
-                                       href="{{ route('faculties.edit', $faculty->id) }}">Edit</a>
+                                       href="{{ route('faculties.edit', $faculty->slug) }}">Edit</a>
                                     <form id="faculty-destroy-form"
                                           action="{{ route('faculties.destroy', $faculty->id) }}" method="POST">
                                         @csrf

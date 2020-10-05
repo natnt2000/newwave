@@ -9,7 +9,7 @@ class Faculty extends Model
     protected $table = 'faculties';
 
     protected $fillable = [
-        'name'
+        'name', 'slug'
     ];
 
     public function students()
