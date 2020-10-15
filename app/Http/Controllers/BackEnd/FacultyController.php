@@ -98,20 +98,40 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        $faculty = $this->facultyRepository->remove($id);
+        $this->facultyRepository->remove($id);
 
         return redirect()->back()->with('success', 'Faculty Deleted Successfully');
     }
 
-    public function list()
+
+    // API
+    public function listApi()
     {
         $faculties = $this->facultyRepository->all();
         return FacultyResource::collection($faculties);
     }
 
-    public function find($id)
+    public function findApi($id)
     {
         $faculty = $this->facultyRepository->find($id);
         return new FacultyResource($faculty);
+    }
+
+    public function createApi(StoreFaculty $request)
+    {
+        $faculty = $this->facultyRepository->create_faculty($request->all());
+        return new FacultyResource($faculty);
+    }
+
+    public function editApi(StoreFaculty $request, $id)
+    {
+        $faculty = $this->facultyRepository->update_faculty($request->all(), $id);
+        return new FacultyResource($faculty);
+    }
+
+    public function deleteApi($id)
+    {
+        $this->facultyRepository->remove($id);
+        return response()->json('successfully');
     }
 }

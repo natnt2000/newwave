@@ -45,6 +45,7 @@ class FacultyRepository extends BaseRepository implements FacultyRepositoryInter
             $data['slug'] = Str::slug($data['name'], '-') . '-' . uniqid('faculty');
             $faculty->update($data);
         }
+        return $faculty;
     }
 
 }

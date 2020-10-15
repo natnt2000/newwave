@@ -19,5 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/faculties', 'BackEnd\FacultyController@list');
-Route::get('/faculties/{id}', 'BackEnd\FacultyController@find');
+Route::get('/faculties', 'BackEnd\FacultyController@listApi');
+Route::get('/faculties/{id}', 'BackEnd\FacultyController@findApi');
+Route::post('/faculties', 'BackEnd\FacultyController@createApi');
+Route::match( ['put', 'patch'], '/faculties/{id}/edit', 'BackEnd\FacultyController@editApi');
+Route::delete('/faculties/{id}', 'BackEnd\FacultyController@deleteApi');

@@ -17,6 +17,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/regex-add-class', function () {
+    $images = '<img class="test" src="/common/design/user/img/102-cvl/102-CVL-001-f.png" alt="マックスウェイトポケットTシャツ" />
+                <p><img class="test1 test2" src="common/design/user/img/item/logo_printstar.png" alt="プリントスター"/></p>
+                <img style="margin: 0 auto 0; width: 80%;" src="common/design/user/img/item/item-i02.png" alt="ホワイト" />
+                <img src="common/design/user/img/item/thumb_00200_bsr.gif" alt="ベビーロンパス" class="test3"/>
+                <img alt="ホワイト" data-src="common/design/user/img/item/item-i01.png"/>
+                <img alt="ホワイト" class="lazyload" src="common/design/user/img/item/item-i01.png"/>';
+    $images = preg_replace('/class=".*?"/', '', $images);
+    $images = str_replace(' src', ' class="lazyload" data-src', $images);
+
+    return $images;
+});
+
 Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/profile', 'StudentController@profile')->name('student.profile');
     Route::match(['PUT', 'PATCH'], '/profile', 'StudentController@update_profile')->name('student.update_profile');
