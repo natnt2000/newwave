@@ -24,9 +24,13 @@ Route::get('/regex-add-class', function () {
                 <img src="common/design/user/img/item/thumb_00200_bsr.gif" alt="ベビーロンパス" class="test3"/>
                 <img alt="ホワイト" data-src="common/design/user/img/item/item-i01.png"/>
                 <img alt="ホワイト" class="lazyload" src="common/design/user/img/item/item-i01.png"/>';
-    $images = preg_replace('/class=".*?"/', '', $images);
-    $images = str_replace(' src', ' class="lazyload" data-src', $images);
-
+    $images = preg_replace('/<img(.*?)(src|data-src)="(.*?)"(.*?)\/>/', '<img $1 data-src="$3" $4 />', $images);
+    $images = preg_replace_callback('/<img(.*?)\/>/', function ($m) {
+        return '<img ' . $m[1] . ' ' . (strpos($m[1], 'class') == false ? 'class="lazyload"' : '') . '  />';
+    }, $images);
+    $images = preg_replace_callback('/<img(.*?)class="(.*?)"(.*?)\/>/', function ($m) {
+        return '<img ' . $m[1] . ' ' . ($m[2] != 'lazyload' ? 'class="' . $m[2] . ' lazyload"' : 'class="' . $m[2] . '"') . ' ' . $m[3] . '/>';
+    }, $images);
     return $images;
 });
 
